@@ -1,0 +1,23 @@
+# AWS Configuration
+aws_region = "us-east-1"
+
+# Project Configuration
+project_name = "my-terraform-vpc"
+
+# VPC Configuration
+vpc_cidr = "10.0.0.0/16"
+
+# Subnet Configuration
+public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnet_cidrs = ["10.0.3.0/24", "10.0.4.0/24"]
+
+# EC2 Configuration
+ami_id  = "ami-0c02fb55956c7d316"  # Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type
+nat_ami_id = "ami-0c02fb55956c7d316"  # Amazon Linux 2 AMI (HVM) - Kernel 5.10, SSD Volume Type
+
+# Instance Types
+instance_type     = "t2.micro"
+nat_instance_type = "t2.nano"
+
+# Note: This configuration uses EC2 Instance Connect for SSH access
+# No SSH keys are required - you can connect via AWS Console
