@@ -31,7 +31,7 @@ The infrastructure includes:
 
 1. **Clone and navigate to the directory**:
    ```bash
-   cd /Users/shyam/work/esl-infra
+   cd /Users/shyam/work/demo-infra
    ```
 
 2. **Copy the example variables file**:
