@@ -16,8 +16,8 @@ resource "aws_instance" "nat" {
   ami                    = var.nat_ami_id
   instance_type          = var.nat_instance_type
   iam_instance_profile   = aws_iam_instance_profile.ec2_connect_profile.name
-  subnet_id             = aws_subnet.public[0].id
-  vpc_security_group_ids = [aws_security_group.nat.id]
+  subnet_id             = module.vpc.public_subnet_ids[0]
+  vpc_security_group_ids = [module.vpc.nat_security_group_id]
   source_dest_check     = false
   user_data_base64      = base64encode(local.nat_user_data)
 
@@ -31,8 +31,8 @@ resource "aws_instance" "public" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
   iam_instance_profile   = aws_iam_instance_profile.ec2_connect_profile.name
-  subnet_id             = aws_subnet.public[0].id
-  vpc_security_group_ids = [aws_security_group.public.id]
+  subnet_id             = module.vpc.public_subnet_ids[0]
+  vpc_security_group_ids = [module.vpc.public_security_group_id]
 
   user_data = <<-EOF
     #!/bin/bash
@@ -53,8 +53,8 @@ resource "aws_instance" "private" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
   iam_instance_profile   = aws_iam_instance_profile.ec2_connect_profile.name
-  subnet_id             = aws_subnet.private[0].id
-  vpc_security_group_ids = [aws_security_group.private.id]
+  subnet_id             = module.vpc.private_subnet_ids[0]
+  vpc_security_group_ids = [module.vpc.private_security_group_id]
 
   user_data = <<-EOF
     #!/bin/bash
