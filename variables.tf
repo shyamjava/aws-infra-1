@@ -52,3 +52,4 @@ variable "nat_instance_type" {
   default     = "t2.nano"
 }
 
+
